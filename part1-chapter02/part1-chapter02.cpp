@@ -65,7 +65,7 @@ int main(void)
 	int& num2 = num1;//참조자
 
 	num2 = 3047;
-	
+
 	std::cout << "VAL: " << num1 << std::endl;//같은 값
 	std::cout << "REF: " << num2 << std::endl;//같은 값
 
@@ -88,4 +88,92 @@ int main(void)
 	std::cout << ref2 << std::endl;
 	std::cout << ref3 << std::endl;
 	return 0;
+}
+
+#include <iostream>
+
+int main(void)
+{
+	int num = 12;
+	int* ptr = &num;
+	int** dptr = &ptr;
+
+	int& ref = num;
+	int* (&pref) = ptr;
+	int** (&dpref) = dptr;
+
+	std::cout << ref << std::endl;
+	std::cout << *pref << std::endl;
+	std::cout << **dpref << std::endl;
+}
+
+#include <iostream>
+using namespace std;
+
+void swapbyref2(int& ref1, int& ref2)
+{
+	int temp = ref1;
+	ref1 = ref2;
+	ref2 = temp;
+}
+
+int main()
+{
+	int val1 = 10;
+	int val2 = 20;
+
+	swapbyref2(val1, val2);
+	std::cout << "val1: " << val1 << endl;
+	std::cout << "val2: " << val2 << endl;
+	return 0;
+}
+
+#include <iostream>
+
+using namespace std;
+
+void swap1(int& ref)
+{
+	ref++;
+}
+
+void swap2(int& ref2)
+{
+	ref2 = ref2 * -1;
+}
+
+int main(void)
+{
+	int num1 = 10;
+	int num2 = 20;
+
+	swap1(num1);
+	std::cout << num1 << endl;
+	swap2(num2);
+	std::cout << num2 << endl;
+
+	retyrn 0;
+}
+
+#include <iostream>
+
+void swapPointer(int& ref1, int& ref2)
+{
+	int temp = ref1;
+	ref1 = ref2;
+	ref2 = temp;
+}
+
+int main(void)
+{
+	int num1 = 5;
+	int* ptr1 = &num1;
+	int num2 = 10;
+	int* ptr2 = &num2;
+
+	swapPointer(*ptr1, *ptr2);
+	std::cout << *ptr1 << ' ' << *ptr2 << std::endl;
+
+	return 0;
+
 }*/
