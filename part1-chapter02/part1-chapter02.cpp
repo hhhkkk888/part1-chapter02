@@ -177,3 +177,39 @@ int main(void)
 	return 0;
 
 }*/
+#include <iostream>
+
+using namespace std;
+
+typedef struct __point
+{
+	int xpos;
+	int ypos;
+}point;
+
+point &PointAdd(const point &x1,const point &x2) 
+{
+	point* ref = new point;
+
+	ref->xpos = x1.xpos + x2.xpos;   //x1은 힙 영역 할당x
+	ref->ypos = x1.ypos + x2.ypos;   //x2는 힙 영역 할당x
+	return *ref;
+	
+}
+
+int main(void)
+{
+	point* p1 = new point;
+	point* p2 = new point;
+
+	cin>>p1->xpos>>p1->ypos>>p2->xpos>>p2->ypos;
+	
+	point &result= PointAdd(*p1,*p2);
+
+	cout<<result.xpos<<","<<result.ypos;
+
+	delete p1;
+	delete p2;
+	
+}
+
